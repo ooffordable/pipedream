@@ -119,23 +119,17 @@ class SyntheticDataset(torch.utils.data.dataset.Dataset):
 def main():
     global args, best_prec1
     args = parser.parse_args()
-
+    train_size = 5120
     args.module = 'models.resnet50.gpus=2'
-    args.config_path= 'models/resnet50/gpus=2/mp_conf.json'
-    args.num_ranks_in_server = 2
-    args.batch_size = 32
-    train_size = 2560
 
-#    args.data_dir = '/cmsdata/ssd0/cmslab/imagenet-data/raw-data/'
     args.synthetic_data = True
-    args.local_rank = args.rank
     args.distributed_backend = 'gloo'
-    args.epochs = 1
     args.master_addr = '01.elsa.snuspl.snu.ac.kr'
     
-
     torch.cuda.set_device(args.local_rank)
+    print(args.local_rank)
 
+    print("came here")
     # define loss function (criterion)
     criterion = nn.CrossEntropyLoss()
 
@@ -611,7 +605,6 @@ def accuracy(output, target, topk=(1,)):
             correct_k = correct[:k].view(-1).float().sum(0, keepdim=True)
             res.append(correct_k.mul_(100.0 / batch_size))
         return res
-
 
 if __name__ == '__main__':
     main()

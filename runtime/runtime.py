@@ -188,7 +188,7 @@ class StageRuntime:
             # determine the "producing" and "consuming" module IDs of each
             # tensor. We then use the corresponding machine ranks to send
             # and receive tensors.
-            master_port = 12345
+            master_port = 50000
             self.comm_handler = communication.CommunicationHandler(
                 master_addr=master_addr,
                 master_port=master_port,

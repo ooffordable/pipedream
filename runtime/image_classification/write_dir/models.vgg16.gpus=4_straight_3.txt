@@ -1,0 +1,21 @@
+3
+came here
+Now initiating process group...
+Finished initializing process group; backend: gloo, rank: 3, world_size: 4
+param_size(GB) =  0.030257056
+Send ranks:  {}
+Receive ranks:  {'out4': [2], 'out5': [2], 'target': [2]}
+Setting up process groups for broadcasts...
+At epoch 0, run n = 8
+latent_size(GB) =  0.080841728
+Epoch: 0 Step 0 	Learning rate: 0.100000
+Epoch(with batch 32): [0][0/8]	Memory: 0.162 (0.237) (2.710)
+latent_size(GB) =  0.055151616
+latent_size(GB) =  0.067996672
+latent_size(GB) =  0.067996672
+latent_size(GB) =  0.067996672
+latent_size(GB) =  0.067996672
+latent_size(GB) =  0.067996672
+latent_size(GB) =  0.067996672
+Epoch 0: 8.835 seconds
+Epoch start time: 1597298985.388, epoch end time: 1597298994.223
