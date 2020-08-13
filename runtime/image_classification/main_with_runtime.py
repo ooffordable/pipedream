@@ -93,6 +93,10 @@ parser.add_argument('--recompute', action='store_true',
 parser.add_argument('--macrobatch', action='store_true',
                     help='Macrobatch updates to save memory')
 
+parser.add_argument('--train_size', default=512, type=int,
+                    help='train data size')
+
+
 best_prec1 = 0
 
 
@@ -119,8 +123,6 @@ class SyntheticDataset(torch.utils.data.dataset.Dataset):
 def main():
     global args, best_prec1
     args = parser.parse_args()
-    train_size = 5120
-    args.module = 'models.resnet50.gpus=2'
 
     args.synthetic_data = True
     args.distributed_backend = 'gloo'
@@ -261,7 +263,7 @@ def main():
             )
     else:
         if args.synthetic_data:
-            train_dataset = SyntheticDataset((3, 224, 224), train_size)
+            train_dataset = SyntheticDataset((3, 224, 224), args.train_size)
         else:
             traindir = os.path.join(args.data_dir, 'train')
             train_dataset = datasets.ImageFolder(

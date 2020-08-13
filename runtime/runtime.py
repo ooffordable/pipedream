@@ -136,6 +136,7 @@ class StageRuntime:
             self.num_warmup_minibatches = 0
             self.comm_handler = None
         else:
+            print("here ", len(module_to_stage_map), "len model ",  len(model))
             assert len(module_to_stage_map) == len(model)
             assert self.rank is not None
 

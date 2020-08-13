@@ -1,21 +1,54 @@
 3
 came here
+here  5 len model  5
 Now initiating process group...
 Finished initializing process group; backend: gloo, rank: 3, world_size: 4
-param_size(GB) =  0.030257056
+param_size(GB) =  0.52288912
 Send ranks:  {}
-Receive ranks:  {'out4': [2], 'out5': [2], 'target': [2]}
+Receive ranks:  {'out2': [2], 'target': [2]}
 Setting up process groups for broadcasts...
-At epoch 0, run n = 8
-latent_size(GB) =  0.080841728
+At epoch 0, run n = 10
+latent_size(GB) =  0.194178048
 Epoch: 0 Step 0 	Learning rate: 0.100000
-Epoch(with batch 32): [0][0/8]	Memory: 0.162 (0.237) (2.710)
-latent_size(GB) =  0.055151616
-latent_size(GB) =  0.067996672
-latent_size(GB) =  0.067996672
-latent_size(GB) =  0.067996672
-latent_size(GB) =  0.067996672
-latent_size(GB) =  0.067996672
-latent_size(GB) =  0.067996672
-Epoch 0: 8.835 seconds
-Epoch start time: 1597298985.388, epoch end time: 1597298994.223
+Epoch(with batch 32): [0][0/10]	Memory: 1.293 (1.497) (2.539)
+latent_size(GB) =  0.140700672
+latent_size(GB) =  0.140700672
+latent_size(GB) =  0.140700672
+latent_size(GB) =  0.140700672
+latent_size(GB) =  0.140700672
+latent_size(GB) =  0.140700672
+latent_size(GB) =  0.140700672
+latent_size(GB) =  0.140700672
+latent_size(GB) =  0.140700672
+Epoch 0: 14.499 seconds
+Epoch start time: 1597312343.792, epoch end time: 1597312358.291
+At epoch 1, run n = 10
+latent_size(GB) =  0.140700672
+Epoch: 1 Step 0 	Learning rate: 0.100000
+Epoch(with batch 32): [1][0/10]	Memory: 2.286 (3.137) (3.072)
+latent_size(GB) =  0.140700672
+latent_size(GB) =  0.140700672
+latent_size(GB) =  0.140700672
+latent_size(GB) =  0.140700672
+latent_size(GB) =  0.140700672
+latent_size(GB) =  0.140700672
+latent_size(GB) =  0.140700672
+latent_size(GB) =  0.140700672
+latent_size(GB) =  0.140700672
+Epoch 1: 9.096 seconds
+Epoch start time: 1597312358.311, epoch end time: 1597312367.407
+At epoch 2, run n = 10
+latent_size(GB) =  0.140700672
+Epoch: 2 Step 0 	Learning rate: 0.100000
+Epoch(with batch 32): [2][0/10]	Memory: 2.286 (3.137) (3.072)
+latent_size(GB) =  0.140700672
+latent_size(GB) =  0.140700672
+latent_size(GB) =  0.140700672
+latent_size(GB) =  0.140700672
+latent_size(GB) =  0.140700672
+latent_size(GB) =  0.140700672
+latent_size(GB) =  0.140700672
+latent_size(GB) =  0.140700672
+latent_size(GB) =  0.140700672
+Epoch 2: 8.361 seconds
+Epoch start time: 1597312367.415, epoch end time: 1597312375.776
