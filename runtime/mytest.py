@@ -25,13 +25,14 @@ import torchvision.datasets as datasets
 sys.path.append("..")
 import runtime
 import sgd
+from memory_profiler import MemProfiler
 
 parser = argparse.ArgumentParser(description='PyTorch ImageNet Training')
 parser.add_argument('--data_dir', type=str,
                     help='path to dataset')
 parser.add_argument('--distributed_backend', type=str,
                     help='distributed backend to use (gloo|nccl)')
-parser.add_argument('--module', '-m', required=False,
+parser.add_argument('--module', '-m', default = None, type= str, 
                     help='name of module that contains model and tensor_shapes definition')
 parser.add_argument('-j', '--workers', default=4, type=int, metavar='N',
                     help='number of data loading workers (default: 4)')
@@ -103,7 +104,7 @@ def is_first_stage():
 def is_last_stage():
     return args.stage is None or (args.stage == (args.num_stages-1))
 
-# Synthetic Dataset climage_classificationass.
+# Synthetic Dataset class.
 class SyntheticDataset(torch.utils.data.dataset.Dataset):
     def __init__(self, input_size, length, num_classes=1000):
         self.tensor = Variable(torch.rand(*input_size)).type(torch.FloatTensor)
@@ -120,19 +121,18 @@ def main():
     global args, best_prec1
     args = parser.parse_args()
 
-    args.module = 'models.resnet50.gpus=2'
-    args.config_path= 'models/resnet50/gpus=2/mp_conf.json'
-    args.num_ranks_in_server = 2
-    args.batch_size = 32
-    train_size = 2560
 
-#    args.data_dir = '/cmsdata/ssd0/cmslab/imagenet-data/raw-data/'
-    args.synthetic_data = True
-    args.local_rank = args.rank
-    args.distributed_backend = 'gloo'
-    args.epochs = 1
+    ############################### add arguments #####################################
     
-
+    args.module = 'image_classification.models.resnet50.gpus=4'
+    args.batch_size = 64
+    args.data_dir = '/cmsdata/ssd0/cmslab/imagenet-data/raw-data/'
+    args.local_rank = args.rank
+    args.config_path= 'image_classification/models/resnet50/gpus=4/hybrid_conf.json'
+    args.num_ranks_in_server = 4
+    args.distributed_backend = 'gloo'
+    
+    memprof = MemProfiler()
     torch.cuda.set_device(args.local_rank)
 
     # define loss function (criterion)
@@ -141,17 +141,20 @@ def main():
     # create stages of the model
     module = importlib.import_module(args.module)
     args.arch = module.arch()
-    model = module.model(criterion)
-    input_str = model[0][1][0] # "input"
-
-    # determine shapes of all tensors in passed-in model
+    model = module.model(criterion)    
+     
+    ########### determine shapes of all tensors in passed-in model
+    ########### constuct training_tensor_shapes & eval_tensor_shapes
     if args.arch == 'inception_v3':
         input_size = [args.batch_size, 3, 299, 299]
     else:
         input_size = [args.batch_size, 3, 224, 224]
+
+
+    input_str = model[0][1][0] # "input"
     training_tensor_shapes = {input_str: input_size, "target": [args.batch_size]}
     dtypes = {input_str: torch.int64, "target": torch.int64}
-    inputs_module_destinations = {"input": 0}
+    inputs_module_destinations = {input_str: 0}
     target_tensor_names = {"target"}
     for (stage, inputs, outputs) in model[:-1]:  # Skip last layer (loss).
         input_tensors = []
@@ -188,6 +191,7 @@ def main():
             int(k): v for (k, v) in configuration_maps['stage_to_rank_map'].items()}
         configuration_maps['stage_to_depth_map'] = json_config_file.get("stage_to_depth_map", None)
 
+    print("input_str = ", input_str)
     r = runtime.StageRuntime(
         model=model, distributed_backend=args.distributed_backend,
         fp16=args.fp16, loss_scale=args.loss_scale,
@@ -202,6 +206,8 @@ def main():
         num_ranks_in_server=args.num_ranks_in_server,
         verbose_freq=args.verbose_frequency,
         model_type=runtime.IMAGE_CLASSIFICATION,
+        memprof = memprof,
+        input_name = input_str, 
         enable_recompute=args.recompute)
 
     # stage needed to determine if current stage is the first stage
@@ -220,6 +226,7 @@ def main():
         # number of versions is the total number of machines following the current
         # stage, shared amongst all replicas in this stage
         num_versions = r.num_warmup_minibatches + 1
+    print("num_versions: ", num_versions)
 
     # if specified, resume from checkpoint
     if args.resume:
@@ -233,6 +240,7 @@ def main():
         print("=> loaded checkpoint '{}' (epoch {})"
                 .format(checkpoint_file_path, checkpoint['epoch']))
 
+    memprof.call_profiler("Before define optimizer")
     optimizer = sgd.SGDWithWeightStashing(r.modules(), r.master_parameters,
                                           r.model_parameters, args.loss_scale,
                                           num_versions=num_versions,
@@ -241,6 +249,7 @@ def main():
                                           weight_decay=args.weight_decay,
                                           verbose_freq=args.verbose_frequency,
                                           macrobatch=args.macrobatch)
+    memprof.call_profiler("After define optimizer")
 
     if args.resume:
         optimizer.load_state_dict(checkpoint['optimizer'])
@@ -253,7 +262,7 @@ def main():
 
     if args.arch == 'inception_v3':
         if args.synthetic_data:
-            train_dataset = SyntheticDataset((3, 299, 299), 10000)
+            train_dataset = SyntheticDataset((3, 299, 299), args.batch_size)
         else:
             traindir = os.path.join(args.data_dir, 'train')
             train_dataset = datasets.ImageFolder(
@@ -266,7 +275,7 @@ def main():
             )
     else:
         if args.synthetic_data:
-            train_dataset = SyntheticDataset((3, 224, 224), train_size)
+            train_dataset = SyntheticDataset((3, 224, 224), args.batch_size)
         else:
             traindir = os.path.join(args.data_dir, 'train')
             train_dataset = datasets.ImageFolder(
@@ -277,9 +286,10 @@ def main():
                     transforms.ToTensor(),
                     normalize,
                 ]))
+        print("dataset size = ", len(train_dataset))
 
     if args.synthetic_data:
-        val_dataset = SyntheticDataset((3, 224, 224), 10000)
+        val_dataset = SyntheticDataset((3, 224, 224), args.batch_size)
     else:
         valdir = os.path.join(args.data_dir, 'validation')
         val_dataset = datasets.ImageFolder(valdir, transforms.Compose([
@@ -307,6 +317,8 @@ def main():
         train_dataset, batch_size=args.batch_size, shuffle=(train_sampler is None),
         num_workers=args.workers, pin_memory=True, sampler=train_sampler, drop_last=True)
 
+    print("len = ", len(train_loader), args.batch_size)
+    
     val_loader = torch.utils.data.DataLoader(
         val_dataset, batch_size=args.eval_batch_size, shuffle=False,
         num_workers=args.workers, pin_memory=True, sampler=val_sampler, drop_last=True)
@@ -324,10 +336,10 @@ def main():
         if args.forward_only:
             validate(val_loader, r, epoch)
         else:
-            train(train_loader, r, optimizer, epoch)
+            train(train_loader, r, optimizer, epoch, memprof)
 
-            # evaluate on validation set
             '''
+            # evaluate on validation set
             prec1 = validate(val_loader, r, epoch)
             if r.stage != r.num_stages: prec1 = 0
 
@@ -346,15 +358,7 @@ def main():
             '''
 
 
-
-def print_stat(epoch, i, n):
-    print('Epoch(with batch {3}): [{0}][{1}/{2}]\tMemory: {memory:.3f} ({cached_memory:.3f}) ({max_memory:.3f})'.format(
-        epoch, i, n, args.batch_size, memory=(float(torch.cuda.memory_allocated()) / 10**9),
-        cached_memory=(float(torch.cuda.memory_cached()) / 10**9),
-        max_memory=(float(torch.cuda.max_memory_allocated()) / 10**9)))
-    import sys; sys.stdout.flush()
-
-def train(train_loader, r, optimizer, epoch):
+def train(train_loader, r, optimizer, epoch, memprof):
     batch_time = AverageMeter()
     losses = AverageMeter()
     top1 = AverageMeter()
@@ -364,6 +368,7 @@ def train(train_loader, r, optimizer, epoch):
     n = r.num_iterations(loader_size=len(train_loader))
     if args.num_minibatches is not None:
         n = min(n, args.num_minibatches)
+    print("n = ", n)
     r.train(n)
     if not is_first_stage(): train_loader = None
     r.set_loader(train_loader)
@@ -381,8 +386,6 @@ def train(train_loader, r, optimizer, epoch):
         print("Running training for %d minibatches" % n)
 
     # start num_warmup_minibatches forward passes
-    
-    print("At epoch %d, run n = %d" % (epoch, n))
     for i in range(num_warmup_minibatches):
         r.run_forward()
 
@@ -393,57 +396,28 @@ def train(train_loader, r, optimizer, epoch):
         # Adjust learning rate
         adjust_learning_rate(optimizer, epoch, args.epochs, r, args.lr_policy, i, n)
 
-        if  i % args.print_freq == 0:
-            print_stat(epoch, i, n)
+        if i % args.print_freq == 0:
+            print('Epoch: [{0}][{1}/{2}]\tMemory: {memory:.3f} ({cached_memory:.3f}) ({max_memory:.3f})'.format(
+                    epoch, i, n, memory=(float(torch.cuda.memory_allocated()) / 10**9),
+                    cached_memory=(float(torch.cuda.memory_cached()) / 10**9), 
+                    max_memory=(float(torch.cuda.max_memory_allocated()) / 10**9)))
+            import sys; sys.stdout.flush()
 
 
-        '''
-        if is_last_stage():
-            # measure accuracy and record loss
-            output, target, loss = r.output, r.target, r.loss
-            prec1, prec5 = accuracy(output, target, topk=(1, 5))
-            losses.update(loss.item(), output.size(0))
-            top1.update(prec1[0], output.size(0))
-            top5.update(prec5[0], output.size(0))
-
-            # measure elapsed time
-            batch_time.update(time.time() - end)
-            end = time.time()
-            epoch_time = (end - epoch_start_time) / 3600.0
-            full_epoch_time = (epoch_time / float(i+1)) * float(n)
-
-            if i % args.print_freq == 0:
-                print('Epoch: [{0}][{1}/{2}]\t'
-                      'Time: {batch_time.val:.3f} ({batch_time.avg:.3f})\t'
-                      'Epoch time [hr]: {epoch_time:.3f} ({full_epoch_time:.3f})\t'
-                      'Memory: {memory:.3f} ({cached_memory:.3f})\t'
-                      'Loss: {loss.val:.4f} ({loss.avg:.4f})\t'
-                      'Prec@1: {top1.val:.3f} ({top1.avg:.3f})\t'
-                      'Prec@5: {top5.val:.3f} ({top5.avg:.3f})'.format(
-                       epoch, i, n, batch_time=batch_time,
-                       epoch_time=epoch_time, full_epoch_time=full_epoch_time,
-                       loss=losses, top1=top1, top5=top5,
-                       memory=(float(torch.cuda.memory_allocated()) / 10**9),
-                       cached_memory=(float(torch.cuda.memory_cached()) / 10**9)))
-                import sys; sys.stdout.flush()
-        else:
-            if i % args.print_freq == 0:
-                print('Epoch: [{0}][{1}/{2}]\tMemory: {memory:.3f} ({cached_memory:.3f})'.format(
-                       epoch, i, n, memory=(float(torch.cuda.memory_allocated()) / 10**9),
-                       cached_memory=(float(torch.cuda.memory_cached()) / 10**9)))
-                import sys; sys.stdout.flush()
-
-        '''
-        
         # perform backward pass
         if args.fp16:
             r.zero_grad()
         else:
             optimizer.zero_grad()
+        
         optimizer.load_old_params()
         r.run_backward()
         optimizer.load_new_params()
         optimizer.step()
+
+        #if i == 10:
+        #    memprof.draw_graph('ex11.png')        
+            
 
     # finish remaining backward passes
     for i in range(num_warmup_minibatches):
@@ -456,8 +430,9 @@ def train(train_loader, r, optimizer, epoch):
     # wait for all helper threads to complete
     r.wait()
 
-    print("Epoch %d: %.3f seconds" % (epoch, time.time() - epoch_start_time))
-    print("Epoch start time: %.3f, epoch end time: %.3f" % (epoch_start_time, time.time()))
+#    print("Epoch %d: %.3f seconds" % (epoch, time.time() - epoch_start_time))
+#    print("Epoch start time: %.3f, epoch end time: %.3f" % (epoch_start_time, time.time()))
+
 
 def validate(val_loader, r, epoch):
     batch_time = AverageMeter()
@@ -481,10 +456,11 @@ def validate(val_loader, r, epoch):
     else:
         num_warmup_minibatches = r.num_warmup_minibatches
 
+    '''
     if args.verbose_frequency > 0:
         print("Letting in %d warm-up minibatches" % num_warmup_minibatches)
         print("Running validation for %d minibatches" % n)
-
+    '''
     with torch.no_grad():
         for i in range(num_warmup_minibatches):
             r.run_forward()
@@ -506,7 +482,7 @@ def validate(val_loader, r, epoch):
                 # measure elapsed time
                 batch_time.update(time.time() - end)
                 end = time.time()
-
+                '''
                 if i % args.print_freq == 0:
                     print('Test: [{0}][{1}/{2}]\t'
                           'Time: {batch_time.val:.3f} ({batch_time.avg:.3f})\t'
@@ -519,7 +495,7 @@ def validate(val_loader, r, epoch):
                            memory=(float(torch.cuda.memory_allocated()) / 10**9),
                            cached_memory=(float(torch.cuda.memory_cached()) / 10**9)))
                     import sys; sys.stdout.flush()
-
+                '''
         if is_last_stage():
             print(' * Prec@1 {top1.avg:.3f} Prec@5 {top5.avg:.3f}'
               .format(top1=top1, top5=top5))

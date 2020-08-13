@@ -39,6 +39,7 @@ class CommunicationHandler(object):
         # Initialize the distributed environment.
         os.environ['MASTER_ADDR'] = master_addr
         os.environ['MASTER_PORT'] = str(master_port)
+        print("Now initiating process group...")
         dist.init_process_group(backend, rank=rank, world_size=world_size)
         assert dist.get_world_size() == self.world_size
         print("Finished initializing process group; backend: %s, rank: %d, "
@@ -656,7 +657,8 @@ def _recv(tensor_name, src_rank, tensor_shape=None, dtype=torch.float32,
                                          received_tensor_shape))
 
         # Receive tensor.
-        tensor = torch.zeros(received_tensor_shape, dtype=dtype).cuda()
+        tensor = torch.zeros(received_tensor_shape, dtype=dtype)
+        tensor = tensor.cuda()
         dist.broadcast(tensor=tensor,
                        src=src_rank,
                        group=sub_process_group)

@@ -9,6 +9,7 @@ import torch.distributed as dist
 
 import communication
 import runtime_utilities
+from memory_profiler import MemProfiler
 
 IMAGE_CLASSIFICATION = "image_classification"
 TRANSLATION = "translation"
@@ -47,10 +48,11 @@ class StageRuntime:
                  training_tensor_dtypes, inputs_module_destinations,
                  target_tensor_names, configuration_maps, master_addr,
                  rank, local_rank, num_ranks_in_server, verbose_freq,
-                 model_type, enable_recompute=False):
+                 model_type, input_name = None, memprof= None, enable_recompute=False):
         # Metadata needed for forward and backward pass within this stage.
         self.tensors = []
         self.gradients = {}
+        self.input_name = model[0][1][0]
         self.distributed_backend = distributed_backend
         self.fp16 = fp16
         self.loss_scale = loss_scale
@@ -59,6 +61,14 @@ class StageRuntime:
         self.training_tensor_dtypes = training_tensor_dtypes
         self.model_type = model_type
         self.target_tensor_names = target_tensor_names
+
+        ######################################## define customed profiler
+        
+        if memprof is None:
+            self.memprof = MemProfiler()
+        else:
+            self.memprof = memprof
+        self.memprof.call_profiler("Initialize RunTime")
 
         self.initialize(model, inputs_module_destinations, configuration_maps,
                         master_addr, rank, local_rank, num_ranks_in_server)
@@ -221,13 +231,21 @@ class StageRuntime:
                         self.tensor_tags[model_inputs] = tensor_tag
                         tensor_tag += 1
 
+        self.memprof.call_profiler("Before moving weight")
+
+        param_size = 0
         modules = self.modules_with_dependencies.modules()
         for i in range(len(modules)):
             modules[i] = modules[i].cuda()
+            param_size += sum(p.storage().size() * p.storage().element_size()
+                         for p in modules[i].parameters())
             if self.fp16:
                 import apex.fp16_utils as fp16_utils
                 modules[i] = fp16_utils.BN_convert_float(modules[i].half())
 
+        self.memprof.call_profiler("After moving weight")
+        print("param_size(GB) = ", param_size/(10**9))
+        
         # Initialize all groups in the same order on every worker.
         if stage_to_rank_map is not None:
             groups = []
@@ -264,6 +282,7 @@ class StageRuntime:
             module_size = 4. * num_parameters
             print("Replicating stage: ranks=%d, module_size=%.3f" % (
                 self.num_ranks_in_stage, module_size))
+            self.memprof.call_profiler("After DDP")
 
         if self.fp16:
             self.master_parameters = []
@@ -289,6 +308,8 @@ class StageRuntime:
                 self.num_ranks_in_stage,
                 self.ranks_in_previous_stage,
                 self.ranks_in_next_stage)
+            self.memprof.call_profiler("After initialize handler")
+
 
     @property
     def target(self):
@@ -338,15 +359,17 @@ class StageRuntime:
 
         self.forward_minibatch_id = 0
         self.backward_minibatch_id = 0
-
+        
+        self.memprof.call_profiler("before making threads")    
         if self.comm_handler is not None:
             self.comm_handler.set_tensor_shapes(self.tensor_shapes)
             self.comm_handler.start_helper_threads(
                 num_iterations, forward_only=False)
+        self.memprof.call_profiler("after making threads - send/recv tensor")    
 
         modules = self.modules_with_dependencies.modules()
         for i in range(len(modules)):
-            modules[i].train()
+            modules[i].train() # set training attribute of Module to true
 
     def eval(self, num_iterations):
         self.tensors = []
@@ -384,7 +407,7 @@ class StageRuntime:
                 src, src_length = input
                 tgt, tgt_length = target
 
-                self.tensors[-1]["input0"] = src.cuda(non_blocking=True)
+                self.tensors[-1][self.input_name] = src.cuda(non_blocking=True)
                 self.tensors[-1]["input1"] = torch.LongTensor(src_length).cuda(
                     non_blocking=True)
                 self.tensors[-1]["input2"] = tgt[:-1].cuda(non_blocking=True)
@@ -396,7 +419,7 @@ class StageRuntime:
                 (input, target) = input
                 if self.fp16:
                     input = input.half()
-                self.tensors[-1]["input0"] = input.cuda(non_blocking=True)
+                self.tensors[-1][self.input_name] = input.cuda(non_blocking=True)
                 self.tensors[-1]["target"] = target.cuda(non_blocking=True)
             elif self.model_type == SPEECH_TO_TEXT:
                 input, target, input_percentages, target_sizes = input
@@ -406,6 +429,7 @@ class StageRuntime:
                 self.tensors[-1]["target"] = target.cuda(non_blocking=True)
                 self.tensors[-1]["target_length"] = target_sizes.cuda(
                     non_blocking=True)
+
         else:
             # Receive all required tensors from upstream machines.
             for input_name in self.receive_ranks:
@@ -489,14 +513,19 @@ class StageRuntime:
         """Run forward pass.
         """
         # Receive tensors from previous worker.
+        self.memprof.call_profiler("before receive_forward data")    
         self.receive_tensors_forward()
         tensors = self.tensors[-1]
+        self.memprof.call_profiler("before computation")    
 
         # Run forward pass.
         self._run_forward(tensors)
+        self.memprof.call_profiler("after computation")    
 
         # Send tensors forward.
         self.send_tensors_forward()
+        self.memprof.call_profiler("after send_forward")    
+
         if self.verbose_freq > 0 and self.forward_minibatch_id % self.verbose_freq == 0:
             self.forward_stats.print_stats()
         self.forward_stats.reset_stats()
@@ -508,6 +537,8 @@ class StageRuntime:
         modules = self.modules_with_dependencies.modules()
         all_input_names = self.modules_with_dependencies.all_input_names()
         all_output_names = self.modules_with_dependencies.all_output_names()
+        
+        before = torch.cuda.memory_allocated()
         for i, (module, input_names, output_names) in \
                 enumerate(zip(modules, all_input_names, all_output_names)):
             if i == (len(modules) - 1) and self.is_criterion:
@@ -534,6 +565,8 @@ class StageRuntime:
 
             for (output_name, module_output) in zip(output_names, module_outputs):
                 tensors[output_name] = module_output
+        after = torch.cuda.memory_allocated()
+        print("latent_size(GB) = ", (after-before) / (10**9))
 
         self.output = tensors[input_names[0]]
         if self.is_criterion and self.model_type == TRANSLATION:
@@ -547,7 +580,10 @@ class StageRuntime:
 
     def run_backward(self):
         # Receive input gradients needed for backward pass.
+        self.memprof.call_profiler("before receive backward")    
         self.receive_tensors_backward()
+        self.memprof.call_profiler("after receive backward")    
+
         # Backward pass through modules in reverse order.
         inputs = {}
         outputs = {}
@@ -602,10 +638,14 @@ class StageRuntime:
         if "loss" in outputs:
             outputs["loss"] *= self.loss_scale
 
+
         # Perform backward pass.
+
+        self.memprof.call_profiler("before backward")    
         torch.autograd.backward(tuple([outputs[output_name] for output_name in outputs]),
                                 grad_tensors=tuple([output_gradients[output_name]
                                                     for output_name in outputs]))
+        self.memprof.call_profiler("after backward")    
 
         # Input tensors don't need gradients.
         for input_name in inputs:
@@ -617,7 +657,10 @@ class StageRuntime:
                 self.gradients[input_name] = input_gradients[input_name]
 
         # Send output gradients.
+        self.memprof.call_profiler("before send backward")    
         self.send_tensors_backward()
+        self.memprof.call_profiler("after send backward")    
+
         if self.verbose_freq > 0 and self.backward_minibatch_id % self.verbose_freq == 0:
             self.backward_stats.print_stats()
         self.backward_stats.reset_stats()
