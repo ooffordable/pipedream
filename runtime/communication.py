@@ -38,7 +38,7 @@ class CommunicationHandler(object):
 
         # Initialize the distributed environment.
         os.environ['MASTER_ADDR'] = master_addr
-        os.environ['MASTER_PORT'] = str(master_port)
+        os.environ['MASTER_PORT'] = '7910'#str(master_port)
         print("Now initiating process group...")
         dist.init_process_group(backend, rank=rank, world_size=world_size)
         assert dist.get_world_size() == self.world_size

@@ -131,6 +131,8 @@ def main():
     args.local_rank = args.rank
     args.distributed_backend = 'gloo'
     args.epochs = 1
+    args.master_addr = 'ooffordable@01.elsa.snuspl.snu.ac.kr'
+    args.
     
 
     torch.cuda.set_device(args.local_rank)
