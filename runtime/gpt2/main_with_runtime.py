@@ -302,6 +302,9 @@ def train(args, configuration_maps, train_dataset,
     set_seed(args)
     if args.num_minibatches is not None:
         args.num_train_epochs = 1
+
+    print("len(train_dataloader) = %d, args.num_train_epochs = %d" % (len(train_dataloader), args.num_train_epochs))
+
     for epoch in range(int(args.num_train_epochs)):
         epoch_start_time = time.time()
 
@@ -490,7 +493,7 @@ def main():
     parser.add_argument("--adam_epsilon", default=1e-8, type=float, help="Epsilon for Adam optimizer.")
     parser.add_argument("--max_grad_norm", default=1.0, type=float, help="Max gradient norm.")
     parser.add_argument(
-        "--num_train_epochs", default=1.0, type=float, help="Total number of training epochs to perform."
+        "--num_train_epochs", default=3.0, type=float, help="Total number of training epochs to perform."
     )
     parser.add_argument('--num_minibatches', default=None, type=int,
                         help="Number of minibatches to run.")

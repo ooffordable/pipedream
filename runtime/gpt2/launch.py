@@ -166,7 +166,7 @@ def main():
         process = subprocess.Popen(cmd, stdout = subprocess.PIPE, text=True)
         # process = subprocess.Popen(cmd)
         processes.append(process)
-        args.module_name = "gpugpu"
+        args.module_name = "gpu8"
         filename = write_dir + args.module_name + "_" + str(dist_rank) + ".txt"
         file_list.append(filename)
         print(filename)
