@@ -164,6 +164,7 @@ def main():
                "--local_rank={}".format(local_rank)] + args.training_script_args
 
         process = subprocess.Popen(cmd, stdout = subprocess.PIPE, text=True)
+        # process = subprocess.Popen(cmd)
         processes.append(process)
         args.module_name = "gpugpu"
         filename = write_dir + args.module_name + "_" + str(dist_rank) + ".txt"
