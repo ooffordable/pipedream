@@ -590,6 +590,7 @@ def main():
     total_params = 0
     total_trainable_params = 0
     for module_id, (stage_module_fn, inputs, outputs) in enumerate(model[:-1]):  # Skip last layer (loss).
+#        print("############### ", args.rank, ": ", module_id, (stage_module_fn, inputs, outputs))
         input_tensors = []
         for module_input in inputs:
             if module_input in inputs_module_destinations:
@@ -599,6 +600,7 @@ def main():
                                       dtype=dtypes[module_input]).cuda()
             input_tensors.append(input_tensor)
         stage_module = stage_module_fn()
+        before = torch.cuda.memory_allocated()
         stage_module.cuda()
         # PyTorch should not maintain metadata for a backward pass on
         # synthetic inputs. Without the following line, the runtime is
@@ -615,6 +617,9 @@ def main():
         total_flops += float(model_complexity_info[0].split(" ")[0])
         total_params += sum(p.numel() for p in stage_module.parameters())
         total_trainable_params += sum(p.numel() for p in stage_module.parameters() if p.requires_grad)
+
+        after = torch.cuda.memory_allocated()
+        #print("stage(%d) mem = (%d)MB" % (module_id, (after-before)//(10**6)))
         del stage_module
     print("Total number of floating point operations: %.2f * 10**9" % (
         total_flops * args.train_batch_size * 6))
