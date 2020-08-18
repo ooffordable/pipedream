@@ -126,6 +126,8 @@ def parse_args():
                              "for GPU training, this is recommended to be set "
                              "to the number of GPUs in your system so that "
                              "each process can be bound to a single GPU.")
+    parser.add_argument("--module_name", type=str, default=None,
+                        help="just for name of log file")
 
     # positional
     parser.add_argument("training_script", type=str,
@@ -147,7 +149,9 @@ def main():
 
     # set PyTorch distributed related environmental variables
     processes = []
-
+    file_list = []
+    write_dir = "./write_dir/"
+    
     for local_rank in range(0, args.nproc_per_node):
         # each process's rank
         dist_rank = args.nproc_per_node * args.node_rank + local_rank
@@ -159,15 +163,24 @@ def main():
                "--rank={}".format(dist_rank),
                "--local_rank={}".format(local_rank)] + args.training_script_args
 
-        process = subprocess.Popen(cmd)
+        process = subprocess.Popen(cmd, stdout = subprocess.PIPE, text=True)
         processes.append(process)
+        args.module_name = "gpugpu"
+        filename = write_dir + args.module_name + "_" + str(dist_rank) + ".txt"
+        file_list.append(filename)
+        print(filename)
 
     for process in processes:
         process.wait()
         if process.returncode != 0:
-            raise subprocess.CalledProcessError(returncode=process.returncode,
-                                                cmd=cmd)
+            raise subprocess.CalledProcessError(returncode=process.returncode, cmd=cmd)
 
+    for i in range(len(processes)):
+        if os.path.exists(file_list[i]):
+            f = open(file_list[i], "w")
+        else:
+            f =  open(file_list[i], "x")
+        f.write(processes[i].communicate()[0])
 
 if __name__ == "__main__":
     main()
