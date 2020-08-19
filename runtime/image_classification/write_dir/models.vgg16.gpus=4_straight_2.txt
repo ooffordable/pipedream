@@ -7,11 +7,11 @@ param_size(GB) =  0.028319744
 Send ranks:  {'out2': [3], 'target': [3]}
 Receive ranks:  {'out1': [1], 'target': [1]}
 Setting up process groups for broadcasts...
-At epoch 0, run n = 10
+At epoch 0, run n = 20
 latent_size(GB) =  0.745013248
 latent_size(GB) =  0.539492352
 Epoch: 0 Step 0 	Learning rate: 0.100000
-Epoch(with batch 32): [0][0/10]	Memory: 1.524 (2.307) (3.316)
+Epoch(with batch 32): [0][0/20]	Memory: 1.524 (2.307) (3.316)
 latent_size(GB) =  0.539492352
 latent_size(GB) =  0.539492352
 latent_size(GB) =  0.539492352
@@ -20,13 +20,24 @@ latent_size(GB) =  0.539492352
 latent_size(GB) =  0.539492352
 latent_size(GB) =  0.539492352
 latent_size(GB) =  0.539492352
-Epoch 0: 16.171 seconds
-Epoch start time: 1597312343.812, epoch end time: 1597312359.983
-At epoch 1, run n = 10
+latent_size(GB) =  0.539492352
+latent_size(GB) =  0.539492352
+Epoch(with batch 32): [0][10/20]	Memory: 1.683 (2.500) (4.113)
+latent_size(GB) =  0.539492352
+latent_size(GB) =  0.539492352
+latent_size(GB) =  0.539492352
+latent_size(GB) =  0.539492352
+latent_size(GB) =  0.539492352
+latent_size(GB) =  0.539492352
+latent_size(GB) =  0.539492352
+latent_size(GB) =  0.539492352
+Epoch 0: 23.013 seconds
+Epoch start time: 1597813229.043, epoch end time: 1597813252.056
+At epoch 1, run n = 20
 latent_size(GB) =  0.539492352
 latent_size(GB) =  0.539492352
 Epoch: 1 Step 0 	Learning rate: 0.100000
-Epoch(with batch 32): [1][0/10]	Memory: 1.529 (2.972) (4.113)
+Epoch(with batch 32): [1][0/20]	Memory: 1.477 (2.500) (4.113)
 latent_size(GB) =  0.539492352
 latent_size(GB) =  0.539492352
 latent_size(GB) =  0.539492352
@@ -35,13 +46,24 @@ latent_size(GB) =  0.539492352
 latent_size(GB) =  0.539492352
 latent_size(GB) =  0.539492352
 latent_size(GB) =  0.539492352
-Epoch 1: 7.584 seconds
-Epoch start time: 1597312359.997, epoch end time: 1597312367.581
-At epoch 2, run n = 10
+latent_size(GB) =  0.539492352
+latent_size(GB) =  0.539492352
+Epoch(with batch 32): [1][10/20]	Memory: 1.683 (2.500) (4.113)
+latent_size(GB) =  0.539492352
+latent_size(GB) =  0.539492352
+latent_size(GB) =  0.539492352
+latent_size(GB) =  0.539492352
+latent_size(GB) =  0.539492352
+latent_size(GB) =  0.539492352
+latent_size(GB) =  0.539492352
+latent_size(GB) =  0.539492352
+Epoch 1: 15.208 seconds
+Epoch start time: 1597813252.059, epoch end time: 1597813267.266
+At epoch 2, run n = 20
 latent_size(GB) =  0.539492352
 latent_size(GB) =  0.539492352
 Epoch: 2 Step 0 	Learning rate: 0.100000
-Epoch(with batch 32): [2][0/10]	Memory: 1.477 (2.972) (4.113)
+Epoch(with batch 32): [2][0/20]	Memory: 1.477 (2.500) (4.113)
 latent_size(GB) =  0.539492352
 latent_size(GB) =  0.539492352
 latent_size(GB) =  0.539492352
@@ -50,5 +72,16 @@ latent_size(GB) =  0.539492352
 latent_size(GB) =  0.539492352
 latent_size(GB) =  0.539492352
 latent_size(GB) =  0.539492352
-Epoch 2: 8.345 seconds
-Epoch start time: 1597312367.584, epoch end time: 1597312375.929
+latent_size(GB) =  0.539492352
+latent_size(GB) =  0.539492352
+Epoch(with batch 32): [2][10/20]	Memory: 1.683 (2.500) (4.113)
+latent_size(GB) =  0.539492352
+latent_size(GB) =  0.539492352
+latent_size(GB) =  0.539492352
+latent_size(GB) =  0.539492352
+latent_size(GB) =  0.539492352
+latent_size(GB) =  0.539492352
+latent_size(GB) =  0.539492352
+latent_size(GB) =  0.539492352
+Epoch 2: 15.335 seconds
+Epoch start time: 1597813267.270, epoch end time: 1597813282.605

@@ -5,17 +5,18 @@ import subprocess
 # should execute at each machine once 
 def mainmain():
     write_dir = './write_dir/'
-    num_ranks_in_server = 4
+    num_ranks_in_server = 6
     num_ranks_prev_server = 0
-    debug_mode = False
+    debug_mode = True
 
-    module = 'models.vgg16.gpus=4_straight'
-    config_path= 'models/vgg16/gpus=4_straight/mp_conf.json'
-    batch_size = 32
+    module = 'models.vgg16.gpus=16_straight'
+    config_path= 'models/vgg16/gpus=16_straight/mp_conf.json'
+    batch_size = 8
     train_size = 640
 
+
     #args.data_dir = '/cmsdata/ssd0/cmslab/imagenet-data/raw-data/'
-    synthetic_data = True
+    synthetic_data = False
     distributed_backend = 'gloo'
     epochs = 3
     master_addr = '01.elsa.snuspl.snu.ac.kr'
@@ -42,7 +43,7 @@ def mainmain():
                 stdout = subprocess.PIPE, stderr=subprocess.STDOUT, text=True)
         process_list.append(p)
 
-        filename = write_dir + module + "_" + str(rank) + ".txt"
+        filename = write_dir + "gpu16" + "_" + str(rank) + ".txt"
         file_list.append(filename)
     try:
         for p in process_list:

@@ -1,0 +1,553 @@
+batch size =  16
+1
+came here
+here  17 len model  17
+Now initiating process group...
+Finished initializing process group; backend: gloo, rank: 1, world_size: 8
+param_size(GB) =  0.000147712
+Send ranks:  {'out3': [2], 'target': [2]}
+Receive ranks:  {'out1': [0], 'target': [0]}
+Setting up process groups for broadcasts...
+At epoch 0, run n = 160
+latent_size(GB) =  2.05520896
+latent_size(GB) =  0.822083072
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562176
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.6165632
+Epoch: 0 Step 0 	Learning rate: 0.100000
+Epoch(with batch 16): [0][0/160]	Memory: 6.167 (6.168) (6.167)
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.822083584
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+Epoch(with batch 16): [0][10/160]	Memory: 6.578 (6.990) (9.285)
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+Epoch(with batch 16): [0][20/160]	Memory: 6.578 (6.990) (9.285)
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+Epoch(with batch 16): [0][30/160]	Memory: 6.373 (6.990) (9.285)
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+Epoch(with batch 16): [0][40/160]	Memory: 6.578 (6.990) (9.285)
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+Epoch(with batch 16): [0][50/160]	Memory: 6.373 (6.990) (9.285)
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+Epoch(with batch 16): [0][60/160]	Memory: 6.578 (6.990) (9.285)
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+Epoch(with batch 16): [0][70/160]	Memory: 6.578 (6.990) (9.285)
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+Epoch(with batch 16): [0][80/160]	Memory: 6.373 (6.990) (9.285)
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+Epoch(with batch 16): [0][90/160]	Memory: 6.373 (6.990) (9.285)
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+Epoch: 0 Step 100 	Learning rate: 0.100000
+Epoch(with batch 16): [0][100/160]	Memory: 6.373 (6.990) (9.285)
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+Epoch(with batch 16): [0][110/160]	Memory: 6.578 (6.990) (9.285)
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.411041792
+latent_size(GB) =  0.616562688
+Epoch(with batch 16): [0][120/160]	Memory: 6.578 (6.990) (9.285)
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+Epoch(with batch 16): [0][130/160]	Memory: 6.784 (6.990) (9.285)
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+Epoch(with batch 16): [0][140/160]	Memory: 6.373 (6.990) (9.285)
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.6165632
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+Epoch(with batch 16): [0][150/160]	Memory: 6.784 (6.990) (9.285)
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+Epoch 0: 129.739 seconds
+Epoch start time: 1597813925.959, epoch end time: 1597814055.698
+At epoch 1, run n = 160
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+Epoch: 1 Step 0 	Learning rate: 0.100000
+Epoch(with batch 16): [1][0/160]	Memory: 5.962 (6.990) (9.285)
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+Epoch(with batch 16): [1][10/160]	Memory: 6.578 (6.990) (9.285)
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+Epoch(with batch 16): [1][20/160]	Memory: 6.578 (6.990) (9.285)
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+Epoch(with batch 16): [1][30/160]	Memory: 6.373 (6.990) (9.285)
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.411041792
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+Epoch(with batch 16): [1][40/160]	Memory: 6.373 (6.990) (9.285)
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+Epoch(with batch 16): [1][50/160]	Memory: 6.373 (6.990) (9.285)
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+Epoch(with batch 16): [1][60/160]	Memory: 6.578 (6.990) (9.285)
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+Epoch(with batch 16): [1][70/160]	Memory: 6.578 (6.990) (9.285)
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.822083584
+Epoch(with batch 16): [1][80/160]	Memory: 6.373 (6.990) (9.285)
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+Epoch(with batch 16): [1][90/160]	Memory: 6.578 (6.990) (9.285)
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.822083584
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+Epoch: 1 Step 100 	Learning rate: 0.100000
+Epoch(with batch 16): [1][100/160]	Memory: 6.578 (6.990) (9.285)
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+Epoch(with batch 16): [1][110/160]	Memory: 6.578 (6.990) (9.285)
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+Epoch(with batch 16): [1][120/160]	Memory: 6.373 (6.990) (9.285)
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+Epoch(with batch 16): [1][130/160]	Memory: 6.373 (6.990) (9.285)
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+Epoch(with batch 16): [1][140/160]	Memory: 6.373 (6.990) (9.285)
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+Epoch(with batch 16): [1][150/160]	Memory: 6.578 (6.990) (9.285)
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+Epoch 1: 114.095 seconds
+Epoch start time: 1597814055.703, epoch end time: 1597814169.798
+At epoch 2, run n = 160
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+Epoch: 2 Step 0 	Learning rate: 0.100000
+Epoch(with batch 16): [2][0/160]	Memory: 5.962 (6.990) (9.285)
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+Epoch(with batch 16): [2][10/160]	Memory: 6.373 (6.990) (9.285)
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+Epoch(with batch 16): [2][20/160]	Memory: 6.578 (6.990) (9.285)
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+Epoch(with batch 16): [2][30/160]	Memory: 6.784 (6.990) (9.285)
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+Epoch(with batch 16): [2][40/160]	Memory: 6.373 (6.990) (9.285)
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.822083584
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+Epoch(with batch 16): [2][50/160]	Memory: 6.578 (6.990) (9.285)
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+Epoch(with batch 16): [2][60/160]	Memory: 6.373 (6.990) (9.285)
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+Epoch(with batch 16): [2][70/160]	Memory: 6.578 (6.990) (9.285)
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.6165632
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+Epoch(with batch 16): [2][80/160]	Memory: 6.578 (6.990) (9.285)
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+Epoch(with batch 16): [2][90/160]	Memory: 6.373 (6.990) (9.285)
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.822083584
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+Epoch: 2 Step 100 	Learning rate: 0.100000
+Epoch(with batch 16): [2][100/160]	Memory: 6.578 (6.990) (9.285)
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+Epoch(with batch 16): [2][110/160]	Memory: 6.578 (6.990) (9.285)
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+Epoch(with batch 16): [2][120/160]	Memory: 6.578 (6.990) (9.285)
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+Epoch(with batch 16): [2][130/160]	Memory: 6.373 (6.990) (9.285)
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.411041792
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+Epoch(with batch 16): [2][140/160]	Memory: 6.373 (6.990) (9.285)
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+Epoch(with batch 16): [2][150/160]	Memory: 6.373 (6.990) (9.285)
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+latent_size(GB) =  0.616562688
+Epoch 2: 113.699 seconds
+Epoch start time: 1597814169.800, epoch end time: 1597814283.500

@@ -123,9 +123,11 @@ class SyntheticDataset(torch.utils.data.dataset.Dataset):
 def main():
     global args, best_prec1
     args = parser.parse_args()
-
+    print("batch size = ", args.batch_size)
+    #args.data_dir = '/cmsdata/ssd0/cmslab/imagenet-data/raw-data/'
     args.synthetic_data = True
     args.distributed_backend = 'gloo'
+    args.epochs = 3
     args.master_addr = '01.elsa.snuspl.snu.ac.kr'
     
     torch.cuda.set_device(args.local_rank)
