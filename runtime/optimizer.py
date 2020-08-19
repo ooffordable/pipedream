@@ -37,6 +37,9 @@ class OptimizerWithWeightStashing(torch.optim.Optimizer):
         if macrobatch:
             num_versions = min(2, num_versions)
         self.num_versions = num_versions
+
+
+        print("optimizer_args = ", optimizer_args)
         self.base_optimizer = getattr(torch.optim, optim_name)(
             master_parameters, **optimizer_args)
         self.latest_version = Version()
