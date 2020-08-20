@@ -115,6 +115,10 @@ def parse_args():
                                         "multiple distributed processes")
 
     # Optional arguments for the launch helper
+    parser.add_argument("--dist_world_size", type=int, default=6)
+    parser.add_argument("--nproc_this_node", type=int, default=6)
+    parser.add_argument("--num_prev_ranks", type=int, default=0)
+
     parser.add_argument("--nnodes", type=int, default=1,
                         help="The number of nodes to use for distributed "
                              "training")
@@ -145,16 +149,16 @@ def main():
     args = parse_args()
 
     # world size in terms of number of processes
-    dist_world_size = args.nproc_per_node * args.nnodes
+    dist_world_size = args.dist_world_size
 
     # set PyTorch distributed related environmental variables
     processes = []
     file_list = []
     write_dir = "./write_dir/"
     
-    for local_rank in range(0, args.nproc_per_node):
+    for local_rank in range(0, args.nproc_this_node):
         # each process's rank
-        dist_rank = args.nproc_per_node * args.node_rank + local_rank
+        dist_rank = args.num_prev_ranks + local_rank
 
         # spawn the processes
         cmd = [sys.executable,
@@ -163,8 +167,8 @@ def main():
                "--rank={}".format(dist_rank),
                "--local_rank={}".format(local_rank)] + args.training_script_args
 
-        process = subprocess.Popen(cmd, stdout = subprocess.PIPE, text=True)
-        # process = subprocess.Popen(cmd)
+        #process = subprocess.Popen(cmd, stdout = subprocess.PIPE, text=True)
+        process = subprocess.Popen(cmd)
         processes.append(process)
         args.module_name = "gpu8"
         filename = write_dir + args.module_name + "_" + str(dist_rank) + ".txt"
