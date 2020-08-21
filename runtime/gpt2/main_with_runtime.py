@@ -257,6 +257,9 @@ def train(args, configuration_maps, train_dataset,
     # TODO: Figure out how to call this method.
     # model.resize_token_embeddings(len(tokenizer))
 
+
+    verybefore = torch.cuda.memory_allocated()
+
     # Prepare optimizer and schedule (linear warmup and decay)
     no_decay = ["bias", "LayerNorm.weight"]
     optimizer_grouped_parameters = [
@@ -267,6 +270,7 @@ def train(args, configuration_maps, train_dataset,
         {"params": [p for n, p in r.named_parameters() if any(nd in n for nd in no_decay)], "weight_decay": 0.0},
     ]
 
+    before = torch.cuda.memory_allocated()
     if args.pipedream:
         optimizer = AdamWWithStashing(r.modules(),
                                       optimizer_grouped_parameters,
@@ -290,6 +294,9 @@ def train(args, configuration_maps, train_dataset,
 
     if not args.gpipe and not args.no_input_pipelining:
         optimizer.initialize_queue()
+
+    after = torch.cuda.memory_allocated()
+    print("Optimizer Size: %.3f GB, very before: %.3f GB" %((after-before)/ 10**9, (before-verybefore)/ 10**9))
 
     scheduler = get_linear_schedule_with_warmup(
         optimizer, num_warmup_steps=args.warmup_steps, num_training_steps=t_total
@@ -593,7 +600,6 @@ def main():
     total_params = 0
     total_trainable_params = 0
     for module_id, (stage_module_fn, inputs, outputs) in enumerate(model[:-1]):  # Skip last layer (loss).
-#        print("############### ", args.rank, ": ", module_id, (stage_module_fn, inputs, outputs))
         input_tensors = []
         for module_input in inputs:
             if module_input in inputs_module_destinations:
@@ -603,7 +609,6 @@ def main():
                                       dtype=dtypes[module_input]).cuda()
             input_tensors.append(input_tensor)
         stage_module = stage_module_fn()
-        before = torch.cuda.memory_allocated()
         stage_module.cuda()
         # PyTorch should not maintain metadata for a backward pass on
         # synthetic inputs. Without the following line, the runtime is
@@ -621,8 +626,6 @@ def main():
         total_params += sum(p.numel() for p in stage_module.parameters())
         total_trainable_params += sum(p.numel() for p in stage_module.parameters() if p.requires_grad)
 
-        after = torch.cuda.memory_allocated()
-        #print("stage(%d) mem = (%d)MB" % (module_id, (after-before)//(10**6)))
         del stage_module
     print("Total number of floating point operations: %.2f * 10**9" % (
         total_flops * args.train_batch_size * 6))
@@ -669,7 +672,7 @@ def main():
     update_interval *= args.gradient_accumulation_steps
     r.update_interval = update_interval
     r.vocab_size = config.vocab_size
-    r.cuda()
+    #r.cuda() # delete by myself
 
     # Stage needed to determine if current stage is the first stage.
     # num_stages needed to determine if current stage is the last stage.

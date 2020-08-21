@@ -334,6 +334,8 @@ class CommunicationHandler(object):
             self.fwd_messaging_scheduling_row -= 1
             self.bwd_messaging_scheduling_row -= 1
 
+        print("[", self.rank, "] schedule: ", self.messaging_schedule)
+
     def get_messaging_index(self, sending):
         if sending:
             connection_rank = self.messaging_schedule[
@@ -448,6 +450,7 @@ def recv_helper_thread(queue, counter, local_rank, tensor_name,
             dtype=dtype, tag=tag,
             sub_process_group=sub_process_group)
         queue.add(tensor)
+    print("recv_helper_n = ", num_iterations)
     counter.decrement()
 
 def send_helper_thread(queue, counter, local_rank, tensor_name,

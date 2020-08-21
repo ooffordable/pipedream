@@ -1,6 +1,6 @@
 # Copyright (c) Microsoft Corporation.
 # Licensed under the MIT license.
-
+import torch.cuda
 import torch.optim
 import time
 
@@ -58,7 +58,7 @@ class OptimizerWithStashing(torch.optim.Optimizer):
         """Relay the unknown key to base_optimizer."""
         return getattr(self.base_optimizer, key)
 
-    def initialize_queue(self):
+    def initialize_queue(self):        
         self.queue = deque(maxlen=self.num_versions)
         for i in range(self.num_versions):
             self.queue.append(self.get_params(clone=True))
@@ -128,6 +128,9 @@ class OptimizerWithStashing(torch.optim.Optimizer):
             closure (callable, optional): A closure that reevaluates the model
                                           and returns the loss.
         """
+
+        #before = torch.cuda.memory_allocated()
+
         if self.model_parameters is not None:
             import apex.fp16_utils as fp16_utils
             fp16_utils.model_grads_to_master_grads(self.model_parameters,
@@ -151,5 +154,10 @@ class OptimizerWithStashing(torch.optim.Optimizer):
         if self.num_versions > 1:
             self.buffered_state_dicts = self.queue[0][0]
             self.queue.append(self.get_params(clone=False))
+
+
+        #after = torch.cuda.memory_allocated()
+        #print("After one step of OptimizerWithStashing", (after-before)/ 10**9)
+
 
         return loss

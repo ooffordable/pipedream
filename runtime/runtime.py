@@ -247,10 +247,17 @@ class StageRuntime:
                     if model_inputs not in self.tensor_tags:
                         self.tensor_tags[model_inputs] = tensor_tag
                         tensor_tag += 1
-
+        print("[", self.rank, "] receive_ranks = ", self.receive_ranks," send_ranks = ", self.send_ranks)
+        
+        
+        
+        param_size = 0
         modules = self.modules_with_dependencies.modules()
         for i in range(len(modules)):
             modules[i] = modules[i].cuda()
+            param_size += sum(p.storage().size() * p.storage().element_size()
+                         for p in modules[i].parameters())
+        print("param_size (one version): %.3f GB" % (param_size/10**9))
 
     def initialize_distributed_backend(self):
         # Initialize all groups in the same order on every worker.
@@ -513,13 +520,18 @@ class StageRuntime:
     def run_forward(self, recompute_step=False):
         """Run forward pass.
         """
+        print("before run_forward: %.3f GB" % (torch.cuda.memory_allocated() / 10**9))
+        
         # Receive tensors from previous worker.
         self.receive_tensors_forward()
         tensors = self.tensors[-1]
+
         if recompute_step:
             tensors = {}
             for (key, value) in self.tensors[-1].items():
                 tensors[key] = value
+        after = torch.cuda.memory_allocated()
+       # print("run_forward recomputation?", after-before)
 
         # Run forward pass.
         self._run_forward(tensors, recompute_step=recompute_step)
@@ -535,6 +547,9 @@ class StageRuntime:
             self.forward_stats.print_stats()
         self.forward_stats.reset_stats()
         self.forward_minibatch_id += 1
+
+        print("after run_forward: %.3f GB" % (torch.cuda.memory_allocated() / 10**9))
+
 
     @contextmanager
     def dummy_handler(self):
@@ -586,8 +601,12 @@ class StageRuntime:
                         module_outputs = [sum(module_outputs)]
                 else:
                     # If layer is non-criterion.
+                    before = torch.cuda.memory_allocated()
                     module_outputs = module(*[tensors[input_name]
                                               for input_name in input_names])
+                    after = torch.cuda.memory_allocated()
+                    #print("mem_alloc at computation!", after-before, " ", recompute_step)
+                    
                     if not isinstance(module_outputs, tuple):
                         module_outputs = (module_outputs,)
                     module_outputs = list(module_outputs)
@@ -611,6 +630,9 @@ class StageRuntime:
                 self.loss = 1
 
     def run_backward(self, recompute_step=False):
+        
+        print("before run_backward: %.3f GB" % (torch.cuda.memory_allocated() / 10**9))
+
         # Receive input gradients needed for backward pass.
         self.receive_tensors_backward()
         # Backward pass through modules in reverse order.
@@ -691,23 +713,30 @@ class StageRuntime:
         self.backward_stats.reset_stats()
         self.backward_minibatch_id += 1
 
+        print("after run_backward: %.3f GB" % (torch.cuda.memory_allocated() / 10**9))
+
+
     def _print_training_progress(self, step, n, start_time, epoch_start_time,
                                  loss, cumulative_loss):
         if self.is_last_stage():
-            print("Step [%d/%d] Time/iteration: %.3f seconds (%.3f seconds), Loss: %.3f (%.3f), Memory: %.3f GB (%.3f GB)" % (
+            print("Step [%d/%d] Time/iteration: %.3f seconds (%.3f seconds), Loss: %.3f (%.3f), Memory: %.3f GB (%.3f GB) (%.3f GB)" % (
                 (step + 1), n,
                 (time.time() - start_time) / self.update_interval,
                 (time.time() - epoch_start_time) / (step + 1),
                 loss, sum(cumulative_loss) / len(cumulative_loss),
                 float(torch.cuda.memory_allocated()) / 10**9,
-                float(torch.cuda.memory_cached()) / 10**9))
+                float(torch.cuda.memory_cached()) / 10**9,
+                float(torch.cuda.max_memory_allocated()) / 10**9))
+
         else:
-            print("Step [%d/%d] Time/iteration: %.3f seconds (%.3f seconds), Memory: %.3f GB (%.3f GB)" % (
+            print("Step [%d/%d] Time/iteration: %.3f seconds (%.3f seconds), Memory: %.3f GB (%.3f GB) (%.3f GB)" % (
                 (step + 1), n,
                 (time.time() - start_time) / self.update_interval,
                 (time.time() - epoch_start_time) / (step + 1),
                 float(torch.cuda.memory_allocated()) / 10**9,
-                float(torch.cuda.memory_cached()) / 10**9))
+                float(torch.cuda.memory_cached()) / 10**9,
+                float(torch.cuda.max_memory_allocated()) / 10**9))
+
 
     def run_training_loop_with_flushes(self, n, optimizer, recompute_step):
         # NOTE: This does not work with replicated stages since Python's `no_sync()`
@@ -719,7 +748,7 @@ class StageRuntime:
         step = 0
         loss = None
         self.train(n)
-
+        #print("run_training_loop_with_flushes!!")
         start_time = time.time()
         epoch_start_time = time.time()
         for base_step in range(0, n, self.update_interval):

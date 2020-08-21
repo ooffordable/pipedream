@@ -1,0 +1,643 @@
+Total number of floating point operations: 395.22 * 10**9
+Total number of parameters: 759649280
+Total number of trainable parameters: 759649280
+Initializing process group; backend: gloo, rank: 2, world_size: 6
+Finished initializing process group; backend: gloo, rank: 2, world_size: 6
+[ 2 ] receive_ranks =  {'out2': [1]}  send_ranks =  {'out3': [3]}
+Send ranks:  {'out3': [3], 'labels': [3]}
+Receive ranks:  {'out2': [1], 'labels': [1]}
+[ 2 ] schedule:  [[0]]
+len(train_dataloader) = 2361, args.num_train_epochs = 1
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1793130496   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1793130496   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1793130496   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1793130496   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1793130496   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1793130496   False
+Step [6/198] Time/iteration: 0.533 seconds (0.589 seconds), Memory: 3.073 GB (4.551 GB)
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 10485760   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+Step [12/198] Time/iteration: 0.421 seconds (0.505 seconds), Memory: 3.073 GB (5.203 GB)
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+Step [18/198] Time/iteration: 0.434 seconds (0.481 seconds), Memory: 3.079 GB (5.203 GB)
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+Step [24/198] Time/iteration: 0.458 seconds (0.475 seconds), Memory: 3.079 GB (5.203 GB)
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1799421952   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+Step [30/198] Time/iteration: 0.407 seconds (0.462 seconds), Memory: 3.073 GB (5.203 GB)
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+Step [36/198] Time/iteration: 0.452 seconds (0.460 seconds), Memory: 3.079 GB (5.203 GB)
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+Step [42/198] Time/iteration: 0.409 seconds (0.453 seconds), Memory: 3.073 GB (5.203 GB)
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+Step [48/198] Time/iteration: 0.472 seconds (0.455 seconds), Memory: 3.079 GB (5.203 GB)
+run_forward recomputation? 0
+mem_alloc at computation! 10485760   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+Step [54/198] Time/iteration: 0.397 seconds (0.449 seconds), Memory: 3.073 GB (5.203 GB)
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+Step [60/198] Time/iteration: 0.468 seconds (0.451 seconds), Memory: 3.073 GB (5.203 GB)
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+Step [66/198] Time/iteration: 0.455 seconds (0.451 seconds), Memory: 3.079 GB (5.203 GB)
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 10485760   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+Step [72/198] Time/iteration: 0.387 seconds (0.446 seconds), Memory: 3.073 GB (5.203 GB)
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+Step [78/198] Time/iteration: 0.401 seconds (0.442 seconds), Memory: 3.073 GB (5.203 GB)
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1799421952   False
+Step [84/198] Time/iteration: 0.439 seconds (0.442 seconds), Memory: 3.079 GB (5.203 GB)
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+Step [90/198] Time/iteration: 0.409 seconds (0.440 seconds), Memory: 3.073 GB (5.203 GB)
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+Step [96/198] Time/iteration: 0.427 seconds (0.439 seconds), Memory: 3.079 GB (5.203 GB)
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+Step [102/198] Time/iteration: 0.405 seconds (0.437 seconds), Memory: 3.073 GB (5.203 GB)
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1799430144   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+Step [108/198] Time/iteration: 0.439 seconds (0.437 seconds), Memory: 3.073 GB (5.203 GB)
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+Step [114/198] Time/iteration: 0.419 seconds (0.436 seconds), Memory: 3.073 GB (5.203 GB)
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 10485760   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+Step [120/198] Time/iteration: 0.404 seconds (0.435 seconds), Memory: 3.073 GB (5.203 GB)
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+Step [126/198] Time/iteration: 0.423 seconds (0.434 seconds), Memory: 3.073 GB (5.203 GB)
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+Step [132/198] Time/iteration: 0.431 seconds (0.434 seconds), Memory: 3.073 GB (5.203 GB)
+run_forward recomputation? 0
+mem_alloc at computation! 10485760   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+Step [138/198] Time/iteration: 0.416 seconds (0.433 seconds), Memory: 3.073 GB (5.203 GB)
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+Step [144/198] Time/iteration: 0.433 seconds (0.433 seconds), Memory: 3.073 GB (5.203 GB)
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+Step [150/198] Time/iteration: 0.399 seconds (0.432 seconds), Memory: 3.073 GB (5.203 GB)
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+Step [156/198] Time/iteration: 0.390 seconds (0.430 seconds), Memory: 3.073 GB (5.203 GB)
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+Step [162/198] Time/iteration: 0.418 seconds (0.430 seconds), Memory: 3.073 GB (5.203 GB)
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+Step [168/198] Time/iteration: 0.428 seconds (0.430 seconds), Memory: 3.073 GB (5.203 GB)
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+Step [174/198] Time/iteration: 0.441 seconds (0.430 seconds), Memory: 3.079 GB (5.203 GB)
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+Step [180/198] Time/iteration: 0.433 seconds (0.430 seconds), Memory: 3.079 GB (5.203 GB)
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+Step [186/198] Time/iteration: 0.398 seconds (0.429 seconds), Memory: 3.073 GB (5.203 GB)
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+Step [192/198] Time/iteration: 0.432 seconds (0.429 seconds), Memory: 3.079 GB (5.203 GB)
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+run_forward recomputation? 0
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+recv_helper_n =  198
+recv_helper_n = run_forward recomputation? 0
+ 198
+mem_alloc at computation! 5242880   True
+mem_alloc at computation! 1794179072   False
+Step [195/198] Time/iteration: 0.225 seconds (0.430 seconds), Memory: 3.073 GB (5.203 GB)
+mem_alloc at computation! 1794179072   False
+mem_alloc at computation! 1794179072   False
+recv_helper_n =  198
+mem_alloc at computation! 1795227648   False
+Time needed for 198 iterations: 84.62 seconds
+Epoch 0 (198 iterations): 84.619 seconds
+Epoch start time: 1597943290.476, epoch end time: 1597943375.095

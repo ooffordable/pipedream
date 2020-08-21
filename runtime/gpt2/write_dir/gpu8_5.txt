@@ -1,0 +1,444 @@
+Total number of floating point operations: 395.22 * 10**9
+Total number of parameters: 759649280
+Total number of trainable parameters: 759649280
+Initializing process group; backend: gloo, rank: 5, world_size: 6
+Finished initializing process group; backend: gloo, rank: 5, world_size: 6
+[ 5 ] receive_ranks =  {'out6': [4]}  send_ranks =  {}
+Send ranks:  {}
+Receive ranks:  {'out6': [4], 'labels': [4]}
+[ 5 ] schedule:  [[0]]
+len(train_dataloader) = 2361, args.num_train_epochs = 1
+run_forward recomputation? 0
+mem_alloc at computation! 2014720000   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+Step [6/198] Time/iteration: 0.445 seconds (0.445 seconds), Loss: 10.974 (10.955), Memory: 4.787 GB (7.017 GB)
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+Step [12/198] Time/iteration: 0.394 seconds (0.420 seconds), Loss: 10.120 (10.698), Memory: 4.787 GB (7.690 GB)
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+Step [18/198] Time/iteration: 0.425 seconds (0.422 seconds), Loss: 9.883 (10.421), Memory: 4.787 GB (7.690 GB)
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+Step [24/198] Time/iteration: 0.456 seconds (0.430 seconds), Loss: 9.891 (10.248), Memory: 4.787 GB (7.690 GB)
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+Step [30/198] Time/iteration: 0.436 seconds (0.431 seconds), Loss: 9.136 (10.076), Memory: 4.792 GB (7.690 GB)
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+Step [36/198] Time/iteration: 0.395 seconds (0.425 seconds), Loss: 8.972 (9.936), Memory: 4.787 GB (7.690 GB)
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+Step [42/198] Time/iteration: 0.464 seconds (0.431 seconds), Loss: 9.231 (9.839), Memory: 4.787 GB (7.690 GB)
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+Step [48/198] Time/iteration: 0.439 seconds (0.432 seconds), Loss: 9.160 (9.744), Memory: 4.787 GB (7.690 GB)
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+Step [54/198] Time/iteration: 0.437 seconds (0.432 seconds), Loss: 8.940 (9.666), Memory: 4.787 GB (7.690 GB)
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+Step [60/198] Time/iteration: 0.417 seconds (0.431 seconds), Loss: 8.910 (9.598), Memory: 4.787 GB (7.690 GB)
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+Step [66/198] Time/iteration: 0.465 seconds (0.434 seconds), Loss: 8.989 (9.545), Memory: 4.787 GB (7.690 GB)
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+Step [72/198] Time/iteration: 0.415 seconds (0.432 seconds), Loss: 8.720 (9.492), Memory: 4.787 GB (7.690 GB)
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009485312   False
+run_forward recomputation? 0
+mem_alloc at computation! 2004234240   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+Step [78/198] Time/iteration: 0.398 seconds (0.430 seconds), Loss: 8.552 (9.429), Memory: 4.787 GB (7.690 GB)
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+Step [84/198] Time/iteration: 0.445 seconds (0.431 seconds), Loss: 9.056 (9.379), Memory: 4.787 GB (7.690 GB)
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+Step [90/198] Time/iteration: 0.431 seconds (0.431 seconds), Loss: 8.636 (9.331), Memory: 4.787 GB (7.690 GB)
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+Step [96/198] Time/iteration: 0.381 seconds (0.428 seconds), Loss: 8.547 (9.283), Memory: 4.787 GB (7.690 GB)
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+Step [102/198] Time/iteration: 0.414 seconds (0.427 seconds), Loss: 8.275 (9.231), Memory: 4.787 GB (7.690 GB)
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009485312   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+Step [108/198] Time/iteration: 0.447 seconds (0.428 seconds), Loss: 8.521 (9.182), Memory: 4.787 GB (7.690 GB)
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+Step [114/198] Time/iteration: 0.427 seconds (0.428 seconds), Loss: 8.127 (9.142), Memory: 4.787 GB (7.690 GB)
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+Step [120/198] Time/iteration: 0.424 seconds (0.428 seconds), Loss: 8.144 (9.101), Memory: 4.787 GB (7.690 GB)
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+Step [126/198] Time/iteration: 0.370 seconds (0.425 seconds), Loss: 8.370 (9.063), Memory: 4.787 GB (7.690 GB)
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+Step [132/198] Time/iteration: 0.455 seconds (0.426 seconds), Loss: 8.284 (9.026), Memory: 4.787 GB (7.690 GB)
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+Step [138/198] Time/iteration: 0.446 seconds (0.427 seconds), Loss: 8.034 (8.987), Memory: 4.787 GB (7.690 GB)
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+Step [144/198] Time/iteration: 0.427 seconds (0.427 seconds), Loss: 8.067 (8.948), Memory: 4.787 GB (7.690 GB)
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+Step [150/198] Time/iteration: 0.398 seconds (0.426 seconds), Loss: 8.030 (8.913), Memory: 4.787 GB (7.690 GB)
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+Step [156/198] Time/iteration: 0.406 seconds (0.425 seconds), Loss: 8.098 (8.877), Memory: 4.787 GB (7.690 GB)
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+Step [162/198] Time/iteration: 0.396 seconds (0.424 seconds), Loss: 7.966 (8.840), Memory: 4.787 GB (7.690 GB)
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+Step [168/198] Time/iteration: 0.393 seconds (0.423 seconds), Loss: 7.975 (8.807), Memory: 4.787 GB (7.690 GB)
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+Step [174/198] Time/iteration: 0.484 seconds (0.425 seconds), Loss: 8.176 (8.778), Memory: 4.787 GB (7.690 GB)
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+Step [180/198] Time/iteration: 0.392 seconds (0.424 seconds), Loss: 8.163 (8.744), Memory: 4.787 GB (7.690 GB)
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+Step [186/198] Time/iteration: 0.416 seconds (0.424 seconds), Loss: 7.998 (8.710), Memory: 4.787 GB (7.690 GB)
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+Step [192/198] Time/iteration: 0.427 seconds (0.424 seconds), Loss: 7.446 (8.673), Memory: 4.787 GB (7.690 GB)
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+run_forward recomputation? 0
+mem_alloc at computation! 2009477120   False
+recv_helper_n =  198
+recv_helper_n = run_forward recomputation? 0
+ 198
+mem_alloc at computation! 2009477120   False
+Step [198/198] Time/iteration: 0.414 seconds (0.424 seconds), Loss: 7.686 (8.643), Memory: 4.787 GB (7.690 GB)
+Time needed for 198 iterations: 83.93 seconds
+Epoch 0 (198 iterations): 83.931 seconds
+Epoch start time: 1597943290.481, epoch end time: 1597943374.412
